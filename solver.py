@@ -8,20 +8,14 @@ class SolveState:
         self.finished = False
 
 
-def solve_random(cities):
-    state = SolveState()
+def solve_random_step(cities, state):
+    random.shuffle(cities)
+    distance = calc_path_distance(cities)
+    if state.best_path > distance:
+        state.best_path = distance
 
-    # while loop
-    while not state.finished:
-        random.shuffle(cities)
-        distance = calc_path_distance(cities)
-        if state.best_path > distance:
-            state.best_path = distance
-
-        print_current_path(cities)
-        print(str(distance))
-
-        # update ui
+    print_current_path(cities)
+    print(str(distance))
 
 
 def print_current_path(cities):
