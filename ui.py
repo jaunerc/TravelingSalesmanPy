@@ -1,6 +1,7 @@
 from tkinter import *
 
 city_radius = 5
+lines = []
 
 
 class GraphicalInterface:
@@ -9,9 +10,9 @@ class GraphicalInterface:
         self.canvas = create_canvas(self.master, width, height)
 
     def draw(self, cities):
-        self.canvas.delete("all")
+        clear_current_path(self.canvas)
         draw_cities(self.canvas, cities)
-        draw_edges(self.canvas, cities)
+        draw_current_path(self.canvas, cities)
         self.master.update_idletasks()
         self.master.update()
 
@@ -32,6 +33,11 @@ def create_canvas(master, width, height):
     return canvas
 
 
+def clear_current_path(canvas):
+    for line in lines:
+        canvas.delete(line)
+
+
 def draw_cities(canvas, cities):
     for city in cities:
         start = (city.pos[0] - city_radius, city.pos[1] - city_radius)
@@ -39,8 +45,8 @@ def draw_cities(canvas, cities):
         canvas.create_oval(start[0], start[1], end[0], end[1], fill="white")
 
 
-def draw_edges(canvas, cities):
+def draw_current_path(canvas, cities):
     for i in range(0, len(cities) - 1):
         start = cities[i].pos
         end = cities[i + 1].pos
-        canvas.create_line(start[0], start[1], end[0], end[1], fill="white")
+        lines.append(canvas.create_line(start[0], start[1], end[0], end[1], fill="white"))
