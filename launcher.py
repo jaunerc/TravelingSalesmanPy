@@ -1,6 +1,7 @@
 from ui import *
 from solver import *
 from core import *
+import time
 
 coordinates_x_max = 800
 coordinates_y_max = 600
@@ -24,5 +25,6 @@ def draw():
 for i in range(0, 10):
     solve()
     draw()
+    time.sleep(3)
 
 user_interface.freeze()
