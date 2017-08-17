@@ -9,11 +9,14 @@ class SolveState:
 
 
 def solve_random_step(cities, state):
+    is_best_path = False
     random.shuffle(cities)
     distance = calc_path_distance(cities)
     if state.best_path > distance:
         state.best_path = distance
         print("Current best: " + str(distance))
+        is_best_path = True
+    return is_best_path
 
 
 def print_current_path(cities):

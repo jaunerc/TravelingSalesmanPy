@@ -1,7 +1,8 @@
 from tkinter import *
 
 city_radius = 5
-lines = []
+current_path = []
+best_path = []
 
 
 class GraphicalInterface:
@@ -9,10 +10,11 @@ class GraphicalInterface:
         self.master = create_context()
         self.canvas = create_canvas(self.master, width, height)
 
-    def draw(self, cities):
-        clear_current_path(self.canvas)
+    def draw(self, cities, is_best_path):
         draw_cities(self.canvas, cities)
         draw_current_path(self.canvas, cities)
+        if is_best_path:
+            draw_best_path(self.canvas, cities)
         self.master.update_idletasks()
         self.master.update()
 
@@ -33,8 +35,8 @@ def create_canvas(master, width, height):
     return canvas
 
 
-def clear_current_path(canvas):
-    for line in lines:
+def clear_path(canvas, stored_lines):
+    for line in stored_lines:
         canvas.delete(line)
 
 
@@ -46,7 +48,17 @@ def draw_cities(canvas, cities):
 
 
 def draw_current_path(canvas, cities):
+    clear_path(canvas, current_path)
+    draw_path(canvas, cities, "white", current_path)
+
+
+def draw_best_path(canvas, cities):
+    clear_path(canvas, best_path)
+    draw_path(canvas, cities, "red", best_path)
+
+
+def draw_path(canvas, cities, color, stored_lines):
     for i in range(0, len(cities) - 1):
         start = cities[i].pos
         end = cities[i + 1].pos
-        lines.append(canvas.create_line(start[0], start[1], end[0], end[1], fill="white"))
+        stored_lines.append(canvas.create_line(start[0], start[1], end[0], end[1], fill=color))
