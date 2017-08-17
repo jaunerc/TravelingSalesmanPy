@@ -1,5 +1,4 @@
-import random
-import math
+from core import *
 
 
 class SolveState:
@@ -19,22 +18,4 @@ def solve_random_step(cities, state):
     return is_best_path
 
 
-def print_current_path(cities):
-    path = "Current path "
-    for city in cities:
-        path += city.name + ", "
-    print(path)
 
-
-def calc_path_distance(cities):
-    distance = 0
-    for i in range(0, len(cities) - 1):
-        v1 = cities[i].pos
-        v2 = cities[i + 1].pos
-        distance += calc_euclidean_distance(v1, v2)
-
-    return distance
-
-
-def calc_euclidean_distance(v1, v2):
-    return math.sqrt(math.pow(v1[0] - v2[0], 2) + math.pow(v1[1] - v2[1], 2))
