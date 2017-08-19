@@ -41,3 +41,12 @@ class CoreTest(unittest.TestCase):
         lexicographic_step_three(cities, largest_x, 9)
         lexicographic_step_four(cities, largest_x)
         self.assertEqual(cities[9].number, 8)
+
+    def test_calc_all_possible_paths(self):
+        self.assertEqual(calc_all_symmetric_paths(5), 12)
+
+    def test_calc_all_possible_paths_low(self):
+        self.assertEqual(calc_all_symmetric_paths(2), 1)
+
+    def test_call_all_asymmetric_paths(self):
+        self.assertEqual(call_all_asymmetric_paths(3), 2)

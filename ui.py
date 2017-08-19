@@ -35,6 +35,11 @@ def create_canvas(master, width, height):
     return canvas
 
 
+def write_info_to_the_screen(canvas, cities):
+    canvas.create
+
+
+
 def clear_path(canvas, stored_lines):
     for line in stored_lines:
         canvas.delete(line)

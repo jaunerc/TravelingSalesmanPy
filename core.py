@@ -83,5 +83,13 @@ def lexicographic_step_four(cities, largest_x):
     cities += sublist
 
 
-def calc_all_possible_paths(num_cities):
-    return 0
+def calc_all_symmetric_paths(num_cities):
+    if num_cities <= 3:
+        return 1
+    return math.factorial(num_cities - 1) / 2
+
+
+def call_all_asymmetric_paths(num_cities):
+    if num_cities == 0:
+        return 1
+    return math.factorial(num_cities - 1)
