@@ -35,7 +35,8 @@ def calc_path_distance(cities):
         v1 = cities[i].pos
         v2 = cities[i + 1].pos
         distance += calc_euclidean_distance(v1, v2)
-
+    distance += calc_euclidean_distance(cities[len(cities) - 1].pos,
+                                        cities[0].pos)  # The last path is to the first city
     return distance
 
 
@@ -80,3 +81,7 @@ def lexicographic_step_four(cities, largest_x):
     del (cities[largest_x + 1: len(cities) - 1])
     sublist.reverse()
     cities += sublist
+
+
+def calc_all_possible_paths(num_cities):
+    return 0

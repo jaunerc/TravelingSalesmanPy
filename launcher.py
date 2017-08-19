@@ -15,6 +15,7 @@ solve_state = SolveState()
 
 def solve():
     return solve_random_step(cities, solve_state)
+    # return solve_lexicographic_step(cities, solve_state)
 
 
 def draw(is_best_path):
@@ -25,6 +26,6 @@ def draw(is_best_path):
 while True:
     is_best_path = solve()
     draw(is_best_path)
-    # time.sleep(3)
+    time.sleep(3)
 
 # user_interface.freeze()

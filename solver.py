@@ -7,15 +7,20 @@ class SolveState:
         self.finished = False
 
 
-def solve_random_step(cities, state):
-    is_best_path = False
-    random.shuffle(cities)
+def compare_current_with_best_path(cities, state):
+    current_is_better = False
     distance = calc_path_distance(cities)
     if state.best_path > distance:
         state.best_path = distance
-        print("Current best: " + str(distance))
-        is_best_path = True
-    return is_best_path
+        current_is_better = True
+    return current_is_better
 
 
+def solve_random_step(cities, state):
+    random.shuffle(cities)
+    return compare_current_with_best_path(cities, state)
 
+
+def solve_lexicographic_step(cities, state):
+    lexicographic_order(cities)
+    return compare_current_with_best_path(cities, state)

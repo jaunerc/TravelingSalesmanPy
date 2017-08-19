@@ -59,6 +59,11 @@ def draw_best_path(canvas, cities):
 
 def draw_path(canvas, cities, color, stored_lines):
     for i in range(0, len(cities) - 1):
-        start = cities[i].pos
-        end = cities[i + 1].pos
-        stored_lines.append(canvas.create_line(start[0], start[1], end[0], end[1], fill=color))
+        stored_lines.append(draw_line(canvas, cities, (i, i + 1), color))
+    stored_lines.append(draw_line(canvas, cities, (len(cities) - 1, 0), color))  # Draws the last path to the first city
+
+
+def draw_line(canvas, cities, index_tuple, color):
+    start = cities[index_tuple[0]].pos
+    end = cities[index_tuple[1]].pos
+    return canvas.create_line(start[0], start[1], end[0], end[1], fill=color)
