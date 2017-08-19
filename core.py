@@ -36,7 +36,7 @@ def calc_path_distance(cities):
         v2 = cities[i + 1].pos
         distance += calc_euclidean_distance(v1, v2)
     distance += calc_euclidean_distance(cities[len(cities) - 1].pos,
-                                        cities[0].pos)  # The last path is to the first city
+                                        cities[0].pos)  # The last path goes to the first city
     return distance
 
 
@@ -44,11 +44,23 @@ def calc_euclidean_distance(v1, v2):
     return math.sqrt(math.pow(v1[0] - v2[0], 2) + math.pow(v1[1] - v2[1], 2))
 
 
+def lexicographic_execution(cities):
+    is_over = False
+    cities_to_shuffle = cities[1: len(cities)]
+    del (cities[1: len(cities)])
+    try:
+        lexicographic_order(cities_to_shuffle)
+    except RuntimeError:
+        is_over = True
+    cities += cities_to_shuffle
+    return is_over
+
+
 # https://www.quora.com/How-would-you-explain-an-algorithm-that-generates-permutations-using-lexicographic-ordering
 def lexicographic_order(cities):
     largest_x = lexicographic_step_one(cities)
     if largest_x == -1:
-        return
+        raise RuntimeError("All permutations generated.")
     largest_y = lexicographic_step_two(cities, largest_x)
     lexicographic_step_three(cities, largest_x, largest_y)
     lexicographic_step_four(cities, largest_x)
@@ -77,8 +89,8 @@ def lexicographic_step_three(cities, largest_x, largest_y):
 
 
 def lexicographic_step_four(cities, largest_x):
-    sublist = cities[largest_x + 1: len(cities) - 1]
-    del (cities[largest_x + 1: len(cities) - 1])
+    sublist = cities[largest_x + 1: len(cities)]
+    del (cities[largest_x + 1: len(cities)])
     sublist.reverse()
     cities += sublist
 

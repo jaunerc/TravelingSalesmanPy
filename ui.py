@@ -36,8 +36,11 @@ def create_canvas(master, width, height):
 
 
 def write_info_to_the_screen(canvas, cities):
-    canvas.create
+    return 0
 
+
+def draw_end_state(canvas, cities):
+    clear_path(canvas, current_path)
 
 
 def clear_path(canvas, stored_lines):

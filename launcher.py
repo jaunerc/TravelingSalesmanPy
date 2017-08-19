@@ -5,7 +5,7 @@ import time
 
 coordinates_x_max = 800
 coordinates_y_max = 600
-num_cities = 8
+num_cities = 5
 
 cities = random_cities(num_cities, coordinates_x_max, coordinates_y_max)
 
@@ -15,7 +15,7 @@ solve_state = SolveState()
 
 def solve():
     # return solve_random_step(cities, solve_state)
-    return solve_lexicographic_step(cities, solve_state)
+    return solve_lexicographic_symmetric_step(cities, solve_state)
 
 
 def draw(is_best_path):
@@ -23,9 +23,11 @@ def draw(is_best_path):
 
 
 # main loop
-while True:
+while not solve_state.finished:
     is_best_path = solve()
     draw(is_best_path)
     # time.sleep(3)
 
-# user_interface.freeze()
+draw_end_state(user_interface.canvas, cities)
+print("All paths checked.")
+user_interface.freeze()
