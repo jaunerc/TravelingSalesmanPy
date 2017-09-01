@@ -48,5 +48,5 @@ class CoreTest(unittest.TestCase):
     def test_calc_all_possible_paths_low(self):
         self.assertEqual(calc_all_symmetric_paths(2), 1)
 
-    def test_call_all_asymmetric_paths(self):
-        self.assertEqual(call_all_asymmetric_paths(3), 2)
+    def test_calc_all_asymmetric_paths(self):
+        self.assertEqual(calc_all_asymmetric_paths(3), 2)

@@ -101,7 +101,7 @@ def calc_all_symmetric_paths(num_cities):
     return math.factorial(num_cities - 1) / 2
 
 
-def call_all_asymmetric_paths(num_cities):
+def calc_all_asymmetric_paths(num_cities):
     if num_cities == 0:
         return 1
     return math.factorial(num_cities - 1)

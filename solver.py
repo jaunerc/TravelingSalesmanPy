@@ -23,7 +23,6 @@ def solve_random_step(cities, state):
 
 def solve_lexicographic_symmetric_step(cities, state):
     is_over = lexicographic_execution(cities)
-    print("lexicogr step executed")
     while is_path_duplicated(cities) and not is_over:
         is_over = lexicographic_execution(cities)
     if is_over:

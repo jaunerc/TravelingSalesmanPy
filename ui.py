@@ -1,20 +1,24 @@
 from tkinter import *
+from core import *
 
 city_radius = 5
 current_path = []
 best_path = []
+text_items = []
 
 
 class GraphicalInterface:
-    def __init__(self, width, height):
+    def __init__(self, width, height, num_all_possible_paths):
         self.master = create_context()
         self.canvas = create_canvas(self.master, width, height)
+        self.num_all_possible_paths = num_all_possible_paths
 
-    def draw(self, cities, is_best_path):
+    def draw(self, cities, is_best_path, progress):
         draw_cities(self.canvas, cities)
         draw_current_path(self.canvas, cities)
         if is_best_path:
             draw_best_path(self.canvas, cities)
+        write_info_to_the_screen(self.canvas, self.num_all_possible_paths, progress)
         self.master.update_idletasks()
         self.master.update()
 
@@ -35,8 +39,20 @@ def create_canvas(master, width, height):
     return canvas
 
 
-def write_info_to_the_screen(canvas, cities):
-    return 0
+def write_info_to_the_screen(canvas, num_all_possible_paths, progress):
+    clear_text_items(canvas)
+    percent_calculated = progress / num_all_possible_paths * 100
+    text = "Calculated:" + limit_float_to_four_digits(percent_calculated) + " %"
+    text_items.append(canvas.create_text(120, 120, fill="white", font="Mono 12", text=text))
+
+
+def limit_float_to_four_digits(number):
+    return "{:10.4f}".format(number)
+
+
+def clear_text_items(canvas):
+    for text in text_items:
+        canvas.delete(text)
 
 
 def draw_end_state(canvas, cities):
