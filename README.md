@@ -19,4 +19,4 @@ But 15 cities aren't enough for an ambitious salesman. So we need more cities! F
 ## Solving the problem
 The TSP is called an NP problem. That means we can't solve the problem efficient with an existing computer (but maybe sometime in the future ;-) [Quantum computing](https://en.wikipedia.org/wiki/Quantum_computing)).
 
-The simple and exact way of solving is to try out every possible path. That works fine for a very small number of cities but not for the 100-cities-example.
+The simple and exact way of solving is to try out every possible path. That works fine for a very small number of cities but not for the 100-cities-example. Therefore several probabilistic approaches can be used to find a quicker but less accurate solution.
