@@ -1,5 +1,8 @@
-# TravelingSalesmanPy
-Traveling Salesman stuff written in python.
+# Traveling Salesman Problem Python
+Traveling Salesman Problem solver written in python.
+
+## What this repo provides
+You will find solver implementations for the Traveling Salesman Problem. In addition there is a ui module to visualize the algorithms. The latest commit includes only a greedy solver who try out every possible path to find the shortest path.
 
 ## The problem
 The traveling salesman problem is a well known math problem. Take a look at [wikipedia.org](https://en.wikipedia.org/wiki/Travelling_salesman_problem) if you need further informations about it. To put it in a nutshell, it asks for the shortest path that visits all cities that a traveling salesman wants to visit.
@@ -13,7 +16,7 @@ The number of different paths can be writen as **(n - 1)! / 2**   (n = number of
 ---
 As you can see the growth of this function is immense. As an example, let's take 15 cities. If all directions between two cities are symmetric the number of different paths is (15 - 1)! / 2 or 43'589'145'600.
 
-But 15 cities aren't enough for an ambitious salesman. So we need more cities! For the next example we take 100. Which results in (100 - 1)! / 2. The calculator of google search says the result is approximately 4.666311e+155.
+But 15 is still a small number. For the next example we take 100. Which results in (100 - 1)! / 2. The calculator of google search says the result is approximately 4.666311e+155.
 >Or 4.666311e * 10^155 = 4.666311e * 100'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000'000
 
 ## Solving the problem
