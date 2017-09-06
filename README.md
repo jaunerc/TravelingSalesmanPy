@@ -4,6 +4,8 @@ Traveling Salesman Problem solver written in python.
 ## What this repo provides
 You will find solver implementations for the Traveling Salesman Problem. In addition there is a ui module to visualize the algorithms. The latest commit includes only a greedy solver who try out every possible path to find the shortest path.
 
+![alt Graphical solution](https://image.ibb.co/iNGQgv/traveling_Salesman_Py.png)
+
 ## The problem
 The traveling salesman problem is a well known math problem. Take a look at [wikipedia.org](https://en.wikipedia.org/wiki/Travelling_salesman_problem) if you need further informations about it. To put it in a nutshell, it asks for the shortest path that visits all cities that a traveling salesman wants to visit.
 
